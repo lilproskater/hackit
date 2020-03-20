@@ -1,0 +1,41 @@
+body {
+	margin: 0;
+	padding: 150px 0 0 0;
+	background-color: #333;
+	text-align: center;
+}
+
+h1 {
+	color: #ffffff;
+	font-weight: 600;
+	margin-bottom: 50px;
+}
+
+.input-container {
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.input {
+	height: 50px;
+}
+
+button {
+	height: 50px;
+	width: 60%;
+	font-size: 20px !important;
+	font-weight: 600 !important;
+}
+
+#error {
+	margin-top: 50px;
+	font-size: 30px;
+	color: #ff0000;
+}
+
+#success {
+	margin-top: 50px;
+	font-size: 30px;
+	color: #00ff00;
+}

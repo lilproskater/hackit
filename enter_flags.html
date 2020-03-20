@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=580, maximum-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="src/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="src/css/enter_flags.css">
+	<script type="text/javascript" src="src/js/jquery-3.4.1.js"></script>
+	<title>Hackit</title>
+</head>
+<body>
+	<div class="container">
+		<form onsubmit="return false;">
+			<h1>Enter flags HERE</h1>
+			<div class="input-container">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+					  <span class="input-group-text">Flag #1: </span>
+					</div>
+					<input type="text" class="form-control input" placeholder="Input flag here" id="flag1" required>
+				</div>
+			</div>
+			<div class="input-container">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+					  <span class="input-group-text">Flag #2: </span>
+					</div>
+					<input type="text" class="form-control input" placeholder="Input flag here" id="flag2" required>
+				</div>
+			</div>
+			<div class="input-container">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+					  <span class="input-group-text">Flag #3: </span>
+					</div>
+					<input type="text" class="form-control input" placeholder="Input flag here" id="flag3" required>
+				</div>
+			</div>
+			<button type="submit" class="submit btn btn-success">Submit</button>
+		</form>
+		<h1 id="success"></h1>
+		<h1 id="error"></h1>
+	</div>
+	<script type="text/javascript">
+		$('.submit').click(function() {
+			$.ajax({
+				url: "src/flags_validation/main.php",
+				type: "POST",
+				async: false,
+				data: {
+					"flag1": $('#flag1').val(),
+					"flag2": $('#flag2').val(),
+					"flag3": $('#flag3').val(),
+				},
+				success: function(response) {
+					if (response == '200') {
+						$('#success').html('CONGRATS! YOU HAVE ACCOMPLISHED THE CHALLENGE!');
+						$('#flag1').val('');
+						$('#flag2').val('');
+						$('#flag3').val('');
+						$('#error').html('');
+					}
+					else {
+						$('#error').html(response);
+						$('#success').html('');
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>
